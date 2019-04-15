@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Movie.h"
-#import "RatingBar.h"
+#import "HCSStarRatingView.h"
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "AFNetworking.h"
+#import "ReviewViewController.h"
+
 
 
 

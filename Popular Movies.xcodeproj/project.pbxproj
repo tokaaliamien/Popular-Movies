@@ -18,10 +18,12 @@
 		8407EC3E2258AEC800CBA20D /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407EC3D2258AEC800CBA20D /* libAFNetworking.a */; };
 		8407EC402258AECF00CBA20D /* libPods-Popular Movies.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407EC3F2258AECF00CBA20D /* libPods-Popular Movies.a */; };
 		8407EC452258DA5500CBA20D /* MoviesCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407EC442258DA5500CBA20D /* MoviesCollectionViewController.m */; };
-		8408A62A22610B17009D26BF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408A62922610B17009D26BF /* SettingsViewController.m */; };
 		8408F4EF225BB50B0069A8F8 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408F4EE225BB50B0069A8F8 /* Movie.m */; };
 		8408F4F2225BD3B10069A8F8 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408F4F1225BD3B10069A8F8 /* DetailsViewController.m */; };
 		840A2D6B22638F1000BAA4A2 /* heart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840A2D6A22638F1000BAA4A2 /* heart@3x.png */; };
+		841AD8F42265233C00A81CAD /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AD8F32265233C00A81CAD /* ReviewViewController.m */; };
+		841AD8F72265262700A81CAD /* play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 841AD8F62265262700A81CAD /* play@3x.png */; };
+		841AD8FA22652EDD00A81CAD /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AD8F922652EDD00A81CAD /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +66,16 @@
 		8407EC3F2258AECF00CBA20D /* libPods-Popular Movies.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-Popular Movies.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8407EC432258DA5500CBA20D /* MoviesCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesCollectionViewController.h; sourceTree = "<group>"; };
 		8407EC442258DA5500CBA20D /* MoviesCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesCollectionViewController.m; sourceTree = "<group>"; };
-		8408A62822610B17009D26BF /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		8408A62922610B17009D26BF /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8408F4ED225BB50B0069A8F8 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		8408F4EE225BB50B0069A8F8 /* Movie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		8408F4F0225BD3B10069A8F8 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		8408F4F1225BD3B10069A8F8 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		840A2D6A22638F1000BAA4A2 /* heart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart@3x.png"; path = "images/heart@3x.png"; sourceTree = SOURCE_ROOT; };
+		841AD8F22265233C00A81CAD /* ReviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
+		841AD8F32265233C00A81CAD /* ReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
+		841AD8F62265262700A81CAD /* play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play@3x.png"; path = "images/play@3x.png"; sourceTree = SOURCE_ROOT; };
+		841AD8F822652EDC00A81CAD /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		841AD8F922652EDD00A81CAD /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		BBCF652FA808B93B8C3F46FA /* Pods-Popular Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popular Movies.debug.xcconfig"; path = "Target Support Files/Pods-Popular Movies/Pods-Popular Movies.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +184,7 @@
 		8408A6272261051D009D26BF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				841AD8F62265262700A81CAD /* play@3x.png */,
 				840A2D6A22638F1000BAA4A2 /* heart@3x.png */,
 			);
 			path = Images;
@@ -187,8 +193,8 @@
 		8408A62C22610B2A009D26BF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				8408A62822610B17009D26BF /* SettingsViewController.h */,
-				8408A62922610B17009D26BF /* SettingsViewController.m */,
+				841AD8F822652EDC00A81CAD /* SettingsViewController.h */,
+				841AD8F922652EDD00A81CAD /* SettingsViewController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -217,6 +223,7 @@
 				8408F4F3225BD3B70069A8F8 /* DetailsControllers */,
 				8408A62C22610B2A009D26BF /* Settings */,
 				8404AFD222624757005417FC /* Favorites */,
+				841AD8F52265234F00A81CAD /* Review */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -237,6 +244,15 @@
 				8408F4F1225BD3B10069A8F8 /* DetailsViewController.m */,
 			);
 			path = DetailsControllers;
+			sourceTree = "<group>";
+		};
+		841AD8F52265234F00A81CAD /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				841AD8F22265233C00A81CAD /* ReviewViewController.h */,
+				841AD8F32265233C00A81CAD /* ReviewViewController.m */,
+			);
+			path = Review;
 			sourceTree = "<group>";
 		};
 		D4FA2C2F3485F1BE0A556551 /* Frameworks */ = {
@@ -356,6 +372,7 @@
 				840A2D6B22638F1000BAA4A2 /* heart@3x.png in Resources */,
 				8407EC182258AACD00CBA20D /* LaunchScreen.storyboard in Resources */,
 				8407EC152258AACD00CBA20D /* Assets.xcassets in Resources */,
+				841AD8F72265262700A81CAD /* play@3x.png in Resources */,
 				8407EC132258AACA00CBA20D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,9 +425,10 @@
 			files = (
 				8407EC1B2258AACD00CBA20D /* main.m in Sources */,
 				8408F4F2225BD3B10069A8F8 /* DetailsViewController.m in Sources */,
+				841AD8F42265233C00A81CAD /* ReviewViewController.m in Sources */,
+				841AD8FA22652EDD00A81CAD /* SettingsViewController.m in Sources */,
 				8404AFCF2262473D005417FC /* FavoritesViewController.m in Sources */,
 				8407EC452258DA5500CBA20D /* MoviesCollectionViewController.m in Sources */,
-				8408A62A22610B17009D26BF /* SettingsViewController.m in Sources */,
 				8408F4EF225BB50B0069A8F8 /* Movie.m in Sources */,
 				8407EC0D2258AACA00CBA20D /* AppDelegate.m in Sources */,
 			);

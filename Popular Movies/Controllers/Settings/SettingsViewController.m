@@ -20,7 +20,6 @@
     // Do any additional setup after loading the view.
     def=[NSUserDefaults standardUserDefaults];
     
-    
 }
 - (IBAction)setTopRated:(id)sender {
     [def setObject:@"top_rated" forKey:@"orderBy"];

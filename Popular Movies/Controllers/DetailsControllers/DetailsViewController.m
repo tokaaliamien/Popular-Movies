@@ -24,6 +24,8 @@
     
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
+    _tableView.estimatedRowHeight = 50;
+    _tableView.rowHeight = UITableViewAutomaticDimension;
     
     NSString *query=[@"movieId == " stringByAppendingString:[NSString stringWithFormat:@"%ld",_movie.movieId]];
     
@@ -36,18 +38,35 @@
     
     [self setFavButtonIcon];
     
-    RatingBar *bar = [[RatingBar alloc] initWithFrame:CGRectMake(50, 50, 180, 30)];
-    bar.starNumber=3;
-    bar.viewColor=[UIColor colorWithRed:0.6 green:0.8 blue:1.0 alpha:1.0];
-    //[_ratingBarView addSubview:bar];
     //_imageView.image=[UIImage imageNamed: _movie.posterPath];
-    _titleLabel.text=_movie.title;
-    _overViewTextView.text=_movie.overview;
+    
     if(_movie.posterPath!=nil){
-        NSString *BASE_IMAGE_URL=@"http://image.tmdb.org/t/p/w500";
+        NSString *BASE_IMAGE_URL=@"http://image.tmdb.org/t/p/w185";
         NSString *imageUrl=[BASE_IMAGE_URL stringByAppendingString:_movie.posterPath];
         [_imageView setImageWithURL:[NSURL URLWithString:imageUrl]  usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        
+        _imageView.layer.cornerRadius=7.0f;
+        _imageView.layer.borderColor=[UIColor whiteColor].CGColor;
+        _imageView.layer.borderWidth=3.0f;
     }
+    
+    _titleLabel.text=_movie.title;
+    
+    CGRect frame = _overViewTextView.frame;
+    frame.size.height = _overViewTextView.contentSize.height;
+    _overViewTextView.frame = frame;
+    _overViewTextView.text=_movie.overview;
+    
+    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(170, 140, 150, 50)];
+    starRatingView.maximumValue = 5;
+    starRatingView.minimumValue = 0;
+    starRatingView.allowsHalfStars = YES;
+    starRatingView.value = _movie.voteAverage/2.0;
+    starRatingView.enabled=NO;
+    starRatingView.backgroundColor=[UIColor clearColor];
+    starRatingView.tintColor = [UIColor whiteColor];
+    [self.view addSubview:starRatingView];
+    
     [self getReviews];
     [self getTrailers];
 }
@@ -58,9 +77,9 @@
     [_favButton setImage:image forState:UIControlStateNormal];
     
     if(isFavorite)
-        _favButton.tintColor = [UIColor redColor];
+    _favButton.tintColor = [UIColor redColor];
     else
-        _favButton.tintColor = [UIColor grayColor];
+    _favButton.tintColor = [UIColor grayColor];
     
 }
 
@@ -89,10 +108,10 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         switch(type){
-            case 0:
+                case 0:
                 self->reviews=responseObject[@"results"];
                 break;
-            case 1:
+                case 1:
                 self->trailers=responseObject[@"results"];
                 break;
         }
@@ -107,10 +126,10 @@
     NSString *nameOfSection = @"";
     
     switch (section) {
-        case 0:
+            case 0:
             nameOfSection = @"Reviews";
             break;
-        case 1:
+            case 1:
             nameOfSection = @"Trailers";
             break;
     }
@@ -124,10 +143,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     long count=0;
     switch (section) {
-        case 0:
+            case 0:
             count=reviews.count;
             break;
-        case 1 :
+            case 1 :
             count=trailers.count;
             break;
     }
@@ -139,43 +158,51 @@
     
     UITableViewCell *cell =nil;
     switch (indexPath.section) {
-        case 0:{
-            NSString *cellIdentifier = @"reviewCell";
+            case 0:{
+                NSString *cellIdentifier = @"reviewCell";
+                
+                cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+                cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+                
+                UILabel *author=[cell viewWithTag:1];
+                UILabel *content=[cell viewWithTag:2];
+                author.text=reviews[indexPath.row][@"author"];
+                //content.text=reviews[indexPath.row][@"content"];
+                break;
+            }
             
-            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-            
-            UILabel *author=[cell viewWithTag:1];
-            UITextView *content=[cell viewWithTag:2];
-            CGRect frame = content.frame;
-            frame.size.height = content.contentSize.height;
-            content.frame = frame;
-            
-            author.text=reviews[indexPath.row][@"author"];
-            content.text=@"alfa;kgja;kgdjaljdh";
-            break;
-        }
-            
-        case 1:{
-            NSString *cellIdentifier = @"trailerCell";
-            
-            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-            
-            UILabel *title=[cell viewWithTag:3];
-            
-            title.text=trailers[indexPath.row][@"name"];
-            break;
-        }
+            case 1:{
+                NSString *cellIdentifier = @"trailerCell";
+                
+                cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+                
+                UILabel *title=[cell viewWithTag:3];
+                
+                title.text=trailers[indexPath.row][@"name"];
+                break;
+            }
     }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section==1){
-        NSString *stringURL = [@"http://www.youtube.com/watch?v=" stringByAppendingString:trailers[indexPath.row][@"key"]];
-        
-        NSURL *url = [NSURL URLWithString:stringURL];
-        [[UIApplication sharedApplication] openURL:url];
+    switch (indexPath.section) {
+            case 0:{
+                ReviewViewController *reviewVC=[self.storyboard instantiateViewControllerWithIdentifier:@"reviewVC"];
+                
+                reviewVC.auther=reviews[indexPath.row][@"author"];
+                reviewVC.content=reviews[indexPath.row][@"content"];
+                [self.navigationController pushViewController:reviewVC animated:YES];
+                
+                break;
+            }
+            case 1:{
+                NSString *stringURL = [@"http://www.youtube.com/watch?v=" stringByAppendingString:trailers[indexPath.row][@"key"]];
+                
+                NSURL *url = [NSURL URLWithString:stringURL];
+                [[UIApplication sharedApplication] openURL:url];
+            }
     }
 }
 
@@ -195,9 +222,9 @@
 
 - (IBAction)favButtonClicked:(id)sender {
     if(isFavorite)
-        [self removeFromFav];
+    [self removeFromFav];
     else
-        [self addToFav];
+    [self addToFav];
     
     isFavorite=!isFavorite;
     [self setFavButtonIcon];

@@ -20,6 +20,7 @@
     [super viewDidLoad];
     [_collectionView setDelegate:self];
     [_collectionView setDataSource:self];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
